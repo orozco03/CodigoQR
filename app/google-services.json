@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "308279568404",
+    "firebase_url": "https://codigo-319dc.firebaseio.com",
+    "project_id": "codigo-319dc",
+    "storage_bucket": "codigo-319dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308279568404:android:9200d05534ece72c",
+        "android_client_info": {
+          "package_name": "www.mensajerosurbanos.com.co.codigo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308279568404-0v38aidd9a89skka44q31duj1e5ocn7q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "www.mensajerosurbanos.com.co.codigo",
+            "certificate_hash": "ebcc08567cb4362af30febb8204422edf5ef2365"
+          }
+        },
+        {
+          "client_id": "308279568404-3mh2h6br65il25cr5dkorefakfms2qib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzq-mDRKIZ4gD1l7kMghPCTQyOOMkmLMc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308279568404-3mh2h6br65il25cr5dkorefakfms2qib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

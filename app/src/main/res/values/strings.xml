@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Codigo</string>
+    <string name="facebook_app_id">1038087706399051</string> <string name="fb_login_protocol_scheme">fb1038087706399051</string>
+    <string name="cancel">Cancel login</string>
+    <string name="error">Ocurrio un error</string>
+    <string name="hello">Nombre</string>
+    <string name="iniciar">Cerrar sesión</string>
+    <string name="firebase_error">Error al coectar a firebase</string>
+    <string name="email">Email</string>
+    <string name="UID">UID</string>
+    <string name="bienv">Login</string>
+    <string name="no_login">No puso iniciar</string>
+    <string name="no_revoke">No se pudo remover la cuenta</string>
+    <string name="cerrar">No se pudo cerrar la cuenta</string>
+    <string name="remove">Remover</string>
+    <string name="login">Inicia sesión con facebook y/o gmail</string>
+</resources>
