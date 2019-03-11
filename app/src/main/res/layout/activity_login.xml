@@ -38,14 +38,14 @@
             android:textStyle="bold"
             android:textSize="15sp"/>
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:src="@drawable/ic_facebook"
             android:layout_margin="5dp"/>
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_google"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_gmail"
             android:layout_margin="5dp"/>
 
     </LinearLayout>
@@ -66,7 +66,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="185dp"
         android:layout_margin="10dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
     
     <ProgressBar
         android:id="@+id/progressBar"

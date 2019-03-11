@@ -1,36 +1,31 @@
 package www.mensajerosurbanos.com.co.codigo;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener  {
 
-    private TextView nameTextView, emailTextView, UIDTextView;
+    private TextView  emailTextView, UIDTextView, bienvTextView;
     private ImageView imageView;
+    private Button btnScanner;
 
     private GoogleApiClient googleApiClient;
 
@@ -42,13 +37,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nameTextView = findViewById(R.id.nameTextVew);
+
         emailTextView = findViewById(R.id.emailTextVew);
         UIDTextView = findViewById(R.id.UIDTextVew);
         imageView = findViewById(R.id.photoImageView);
+        bienvTextView = findViewById(R.id.bienvTextView);
+
+        btnScanner = findViewById(R.id.btnScanner);
 
         configGoogle();
-
+        btnScanner();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null){
@@ -57,15 +55,26 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             Uri photoUri = user.getPhotoUrl();
             String uid = user.getUid();
 
-            nameTextView.setText(name);
+
             emailTextView.setText(email);
             UIDTextView.setText(uid);
 
-            //Log.d("IMG", user.getPhotoUrl().toString());
-            //Glide.with(this).load(user.getPhotoUrl()).into(z);
+            bienvTextView.setText(name);
+
         }else {
             goLoginScreen();
         }
+    }
+
+    public void btnScanner(){
+        btnScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QRActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
     public void configGoogle(){
@@ -92,14 +101,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         };
     }
 
+    @SuppressLint("SetTextI18n")
     private void setUserData(FirebaseUser user) {
-        nameTextView.setText(user.getDisplayName());
         emailTextView.setText(user.getEmail());
         UIDTextView.setText(user.getUid());
 
+        bienvTextView.setText("Hola " + user.getDisplayName());
+
         Glide.with(this).load(user.getPhotoUrl()).into(imageView);
     }
-
 
     private void goLoginScreen() {
         Intent intent = new Intent(this, LoginActivity.class);

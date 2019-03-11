@@ -5,43 +5,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/photoImageView"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@color/colorAccent"
-        android:layout_margin="10dp"/>
 
-    <TextView
-        android:id="@+id/nameTextVew"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="5dp"/>
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/emailTextVew"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_usuario"/>
+
+        <TextView
+            android:id="@+id/bienvTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorLog"/>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="290dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/photoImageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@color/colorAccent"
+                android:layout_margin="20dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorLog"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/emailTextVew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/UID"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorLog"/>
+
+                <TextView
+                    android:id="@+id/UIDTextVew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/UID"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="5dp"/>
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp">
 
-    <TextView
-        android:id="@+id/UIDTextVew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-100dp"
-        android:text="@string/UID"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="5dp"/>
+        <Button
+            android:id="@+id/btnScanner"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_codigo_qr"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/escanear"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/bnt_cerrar"
@@ -50,8 +124,8 @@
         android:background="@color/colorBoton"
         android:onClick="logout"
         android:text="@string/iniciar"
-        android:layout_marginTop="200dp"
-        style="@style/Widget.AppCompat.Button.Borderless" />
-
+        android:layout_marginStart="210dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

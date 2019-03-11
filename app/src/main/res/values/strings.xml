@@ -5,13 +5,19 @@
     <string name="error">Ocurrio un error</string>
     <string name="hello">Nombre</string>
     <string name="iniciar">Cerrar sesión</string>
-    <string name="firebase_error">Error al coectar a firebase</string>
-    <string name="email">Email</string>
-    <string name="UID">UID</string>
+    <string name="firebase_error">Error al conectar a firebase</string>
+    <string name="email">Email:</string>
+    <string name="UID">UID:</string>
     <string name="bienv">Login</string>
-    <string name="no_login">No puso iniciar</string>
+    <string name="no_login">No se pudo iniciar</string>
     <string name="no_revoke">No se pudo remover la cuenta</string>
     <string name="cerrar">No se pudo cerrar la cuenta</string>
     <string name="remove">Remover</string>
     <string name="login">Inicia sesión con facebook y/o gmail</string>
+    <string name="QR">Scanner code QR</string>
+    <string name="bien">Permiso condedido</string>
+    <string name="QRGenerar">Generar code QR</string>
+    <string name="permised_not">Permiso denegado</string>
+    <string name="scanner">Lector y scanner de codigo QR</string>
+    <string name="escanear">IR A ESCANEAR</string>
 </resources>
