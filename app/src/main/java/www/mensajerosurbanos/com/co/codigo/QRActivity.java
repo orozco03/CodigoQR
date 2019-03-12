@@ -5,9 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -19,26 +16,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatReader;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.Manifest.permission_group.CAMERA;
+public class QRActivity extends AppCompatActivity {
 
-public class QRActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
-
-    private ZXingScannerView miScannerView;
-    private Button btnQR, btnGenerar;
+    private Button btnQR, btnGenerar, btnAtras;
     private ImageView imageView;
     private TextView UIDText;
 
@@ -54,9 +45,16 @@ public class QRActivity extends AppCompatActivity implements ZXingScannerView.Re
 
         btnQR = findViewById(R.id.btn_QR);
         btnGenerar = findViewById(R.id.btn_Generar);
+        btnAtras = findViewById(R.id.btn_atras);
         imageView = findViewById(R.id.imageViewQR);
         UIDText = findViewById(R.id.UIDTextVew);
 
+        //icono
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_icon);
+
+        btnAtras();
         GenerarQR();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -124,27 +122,56 @@ public class QRActivity extends AppCompatActivity implements ZXingScannerView.Re
 
 
     public void btnEscanear(View view) {
-        miScannerView = new ZXingScannerView(this);
-        setContentView(miScannerView);
-        miScannerView.setResultHandler(this);
-        miScannerView.startCamera();
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.setPrompt("Scan a barcode");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setOrientationLocked(false);
+        integrator.initiateScan();
     }
 
-    @Override
-    public void handleResult(Result result) {
 
+    public void handleResult(String mensaje) {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Resultado Del Scanner");
-        alertDialog.setMessage(result.getText());
+        alertDialog.setMessage(mensaje);
         alertDialog.setIcon(R.drawable.ic_qr);
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "Scanner leído", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "QR leído", Toast.LENGTH_SHORT).show();
             }
         });
 
         alertDialog.show();
-        miScannerView.resumeCameraPreview(this);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(this, "No fue posible capturar el código QR", Toast.LENGTH_LONG).show();
+            } else {
+                result.getContents();
+                handleResult(result.getContents());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    public void btnAtras(){
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 }

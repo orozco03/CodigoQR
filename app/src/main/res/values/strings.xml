@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Codigo</string>
+    <string name="app_name">QR</string>
     <string name="facebook_app_id">1038087706399051</string> <string name="fb_login_protocol_scheme">fb1038087706399051</string>
     <string name="cancel">Cancel login</string>
     <string name="error">Ocurrio un error</string>
@@ -14,10 +14,13 @@
     <string name="cerrar">No se pudo cerrar la cuenta</string>
     <string name="remove">Remover</string>
     <string name="login">Inicia sesión con facebook y/o gmail</string>
-    <string name="QR">Scanner code QR</string>
+    <string name="QR">Escanear código</string>
     <string name="bien">Permiso condedido</string>
-    <string name="QRGenerar">Generar code QR</string>
+    <string name="QRGenerar">Generar código</string>
     <string name="permised_not">Permiso denegado</string>
-    <string name="scanner">Lector y scanner de codigo QR</string>
+    <string name="scanner">Lector y generador de códigos QR</string>
     <string name="escanear">IR A ESCANEAR</string>
+    <string name="sesion">Sesión cerrada</string>
+    <string name="id_usu">ID del usuario:</string>
+    <string name="volver">volver</string>
 </resources>

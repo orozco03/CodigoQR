@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".QRActivity"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:layout_margin="10dp">
+    android:layout_gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,31 +14,85 @@
         android:text="@string/scanner"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorLog"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="290dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_card"
+                    android:layout_margin="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_usu"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/colorPink"/>
+
+                    <TextView
+                        android:id="@+id/UIDTextVew"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/UID"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/colorText"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_margin="10dp">
+        android:layout_margin="20dp">
 
         <Button
             android:id="@+id/btn_QR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:text="@string/QR"
-            android:onClick="btnEscanear"/>
+            android:onClick="btnEscanear"
+            android:background="@color/colorBTN"
+            android:textColor="@color/colorBlanco"
+            android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/btn_Generar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/QRGenerar"/>
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@string/QRGenerar"
+            android:background="@color/colorBTN"
+            android:textColor="@color/colorBlanco"
+            android:layout_margin="5dp"/>
+
     </LinearLayout>
 
-
-    
     <ImageView
         android:id="@+id/imageViewQR"
         android:layout_width="200dp"
@@ -48,15 +101,14 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"/>
 
-    <TextView
-        android:id="@+id/UIDTextVew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/UID"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+    <Button
+        android:id="@+id/btn_atras"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="290dp"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/ic_flecha" />
     
 
 </LinearLayout>

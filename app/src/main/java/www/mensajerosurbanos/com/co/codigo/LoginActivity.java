@@ -61,6 +61,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         configFacebook();
         configGoogle();
+
+        //icono
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_icon);
+
     }
 
     public void configGoogle(){

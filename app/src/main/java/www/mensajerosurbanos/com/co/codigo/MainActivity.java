@@ -6,10 +6,13 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
@@ -45,6 +48,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         btnScanner = findViewById(R.id.btnScanner);
 
+        //icono
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_icon);
+
         configGoogle();
         btnScanner();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -64,6 +72,27 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }else {
             goLoginScreen();
         }
+    }
+
+    //metodo para mostrar y ocultar menu
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
+    }
+
+    //metodo para asignar funciones al menu
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.bnt_cerrar){
+            FirebaseAuth.getInstance().signOut();
+            LoginManager.getInstance().logOut();
+            goLoginScreen();
+            Toast.makeText(getApplicationContext(),R.string.sesion,Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void btnScanner(){
@@ -116,13 +145,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
-        goLoginScreen();
-    }
-
 
     @Override
     protected void onStart() {
